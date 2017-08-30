@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 
 @Component({
   selector: 'app-add-students',
@@ -7,6 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddStudentsComponent implements OnInit {
 
+  @Output() AddClicked = new EventEmitter<any>();
+  @Input() message;
+  flag = 'add';
+  add(){
+    this.AddClicked.emit({mode: this.flag});
+  }
   constructor() { }
 
   ngOnInit() {
